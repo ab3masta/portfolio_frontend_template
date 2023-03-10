@@ -1,0 +1,145 @@
+.App {
+  color: var(--text-primary);
+  background-color: var(--background);
+  font-size: large;
+  font-weight: bold;
+  padding: 20px;
+  height: calc(100vh - 40px);
+  transition: all .5s;
+}
+
+button {
+  color: var(--text-primary);
+  background-color: var(--background);
+  border: 2px var(--text-primary) solid;
+  float: right;
+  transition: all .5s;
+}
+
+/* new css */
+.tool {
+  height: 40px;
+  width: 40px;
+}
+
+
+.socialIcon {
+  font-size: 2em;
+  color: '#093138'
+}
+
+
+.mePhoto {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 5px solid #092438;
+}
+
+.workMockupPhoto {
+  height: 50%;
+  width: 50%;
+  text-align: center;
+  object-fit: cover;
+
+}
+
+.storeImage {
+  height: 50px;
+}
+
+.programmingLanguageLogo {
+  height: 20px;
+  width: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.image {
+  height: 150px;
+  width: 150px;
+}
+
+.footerSocialIcon {
+  font-size: small;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: white
+}
+
+.pageHeight {
+  min-height: 100vh;
+  margin-top: 100px;
+}
+
+
+.experienceLoadIcon {
+  width: 200;
+  height: 200;
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .pageHeight {
+    min-height: 100vh;
+    margin-top: 150px;
+  }
+
+  .storeImage {
+    height: 45px;
+  }
+
+  .footerSocialIcon {
+    font-size: large;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: white
+  }
+
+
+
+  .tool {
+    height: 50px;
+    width: 50px;
+  }
+
+  .mePhoto {
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    border: 10px solid #093138;
+  }
+
+  .programmingLanguageLogo {
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .image {
+    height: 300px;
+    width: 300px;
+  }
+
+  .socialIcon {
+    font-size: 5em;
+    color: '#093138'
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {}
