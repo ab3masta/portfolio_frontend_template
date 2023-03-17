@@ -13,7 +13,7 @@ This template is currently being actively maintained and supported with security
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within this template, please send an email to <email address> with a description of the vulnerability and any related information that may be useful in addressing it. We take all security vulnerabilities seriously and will respond to you as quickly as possible to address any issues that may arise.
+If you discover a security vulnerability within this template, please send an email to aboubacarabdouabarchidev@gmail.com with a description of the vulnerability and any related information that may be useful in addressing it. We take all security vulnerabilities seriously and will respond to you as quickly as possible to address any issues that may arise.
 
 Please do not report security vulnerabilities through GitHub issues. Instead, please email us directly.
 
