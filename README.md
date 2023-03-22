@@ -2,6 +2,10 @@
 
 A responsive portfolio website template built with ReactJS, TypeScript, and Google Material UI, integrated with continuous integration and deployment using GitHub Actions.
 
+## 🎥 Demo
+
+https://user-images.githubusercontent.com/57944650/226938490-80e09d41-c612-4e97-add9-7df10cf27146.mp4
+
 ## 🌟 Features
 
 - Fully responsive design for all devices 📱💻🖥️
