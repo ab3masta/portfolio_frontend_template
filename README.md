@@ -20,7 +20,7 @@ https://user-images.githubusercontent.com/57944650/226938490-80e09d41-c612-4e97-
 1. Clone this repository:
 
    ```sh
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/AbdouAbarchiAboubacar/portfolio_frontend_template.git
 
 2. Install dependencies:
 
