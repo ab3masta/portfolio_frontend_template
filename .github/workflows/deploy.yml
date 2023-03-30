@@ -91,7 +91,7 @@ jobs:
       - name: install dependencies
         run: npm ci
       - name: build app
-        run: npm run build
+        run: npm run build --if-present  
         env:
           PUBLIC_URL: /portfolio_frontend_template
       - name: upload artifact
