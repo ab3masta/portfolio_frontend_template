@@ -1,66 +1,103 @@
-# name: Build and Deploy to github page
+# # name: Build and Deploy to github page
+# # on:
+# #   push:
+# #     branches:
+# #       - master
+
+# # permissions: write-all
+
+# # jobs:
+# #   build-and-deploy:
+# #     runs-on: ubuntu-latest
+# #     steps:
+# #       - name: Checkout 🛎️
+# #         uses: actions/checkout@v2.3.1
+# #         with:
+# #           persist-credentials: false 
+
+# #       - name: Install and Build 🔧
+# #         run: |
+# #           npm install
+# #           npm run build
+
+# #       - name: Deploy 🚀
+# #         uses: peaceiris/actions-gh-pages@v3
+# #         with:
+# #           github_token: ${{ secrets.GITHUB_TOKEN }}
+# #           publish_dir: ./build
+
+# name: Deploy React Application
+
+# # Controls when the action will run. 
 # on:
-#   push:
-#     branches:
-#       - master
-
+#     push:
+#       branches:
+#         - master
+  
 # permissions: write-all
+  
 
+# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 # jobs:
-#   build-and-deploy:
+#   build_test:
+#     # The type of runner that the job will run on
 #     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout 🛎️
-#         uses: actions/checkout@v2.3.1
-#         with:
-#           persist-credentials: false 
 
-#       - name: Install and Build 🔧
+#     strategy:
+#       matrix:
+#         node-version: [12.x] # We will deploy with only one version of node  
+
+#     # Steps represent a sequence of tasks that will be executed as part of the job
+#     steps:
+#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+#       - uses: actions/checkout@v2
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#       - name: npm ci, build and test
 #         run: |
 #           npm install
-#           npm run build
-
-#       - name: Deploy 🚀
+#           npm run build --if-present  
+#       - name: deploy to gh-pages
 #         uses: peaceiris/actions-gh-pages@v3
 #         with:
 #           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           publish_dir: ./build
+#           publish_dir: ./build  
 
-name: Deploy React Application
 
-# Controls when the action will run. 
+name: Deploy
+
 on:
-    push:
-      branches:
-        - master
-  
-permissions: write-all
-  
+  push:
+    branches: [ master ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build_test:
-    # The type of runner that the job will run on
+  deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x] # We will deploy with only one version of node  
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: npm ci, build and test
-        run: |
-          npm install
-          npm run build --if-present  
-      - name: deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+          node-version: 18.x
+      - name: install dependencies
+        run: npm ci
+      - name: build app
+        run: npm run build
+        env:
+          PUBLIC_URL: /game
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  
+          path: ./build
+      - name: deploy to github pages
+        id: deployment
+        uses: actions/deploy-pages@v1
